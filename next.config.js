@@ -9,6 +9,9 @@ const config = {
   experimental: {
     taint: true,
   },
+  images: {
+    remotePatterns: [{ hostname: "utfs.io" }],
+  },
 };
 
 export default config;
