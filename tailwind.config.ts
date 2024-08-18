@@ -1,56 +1,80 @@
-import { type Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
+import type { Config } from "tailwindcss";
 
-export default {
-  content: ["./src/**/*.tsx"],
+const config = {
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
-      fontFamily: {
-        sans: ["var(--font-sans)", ...fontFamily.sans],
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
-        fadeIn: {
-          "0%": { background: "rgba(0, 0, 0, 0)" },
-          "100%": { background: "rgba(0, 0, 0, 0.5)" },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
-        fadeOut: {
-          "0%": { background: "rgba(0, 0, 0, 0.5)" },
-          "100%": { background: "rgba(0, 0, 0, 0)" },
-        },
-        scaleUp: {
-          "0%": { opacity: "0", transform: "scale(0.8)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        scaleDown: {
-          "0%": { opacity: "1", transform: "scale(1)" },
-          "100%": { opacity: "0", transform: "scale(0.8)" },
-        },
-        scaleBack: {
-          "0%": { transform: "scale(1)" },
-          "100%": { transform: "scale(0.95)" },
-        },
-        scaleForward: {
-          "0%": { transform: "scale(0.95)" },
-          "100%": { transform: "scale(1)" },
-        },
-        quickScaleDown: {
-          "0%": { transform: "scale(1)" },
-          "100%": { transform: "scale(0.8)" },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
-        fadeIn: "fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.000) forwards",
-        fadeOut: "fadeOut 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.000) forwards",
-        scaleUp: "scaleUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.000) forwards",
-        scaleDown:
-          "scaleDown 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.000) forwards",
-        scaleBack:
-          "scaleBack 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.000) forwards",
-        scaleForward:
-          "scaleForward 0.5s cubic-bezier(0.165, 0.84, 0.44, 1.000) forwards",
-        quickScaleDown: "quickScaleDown 0s 0.5s linear forwards",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
+export default config;
