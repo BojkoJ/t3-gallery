@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body {
-  @apply bg-black text-white;
+  @apply bg-neutral-950 text-white;
+  font-family: "Roboto", sans-serif;
 }
 
 dialog {

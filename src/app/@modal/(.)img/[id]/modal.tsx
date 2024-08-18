@@ -27,7 +27,7 @@ export function Modal({
   return createPortal(
     <dialog
       ref={dialogRef}
-      className={`h-screen w-screen border-none bg-zinc-900/50 p-0 text-white ${isOpen ? "animate-scaleUp" : "animate-scaleDown"}`}
+      className={`h-screen w-screen border-none bg-black/80 p-0 text-white ${isOpen ? "animate-scaleUp" : "animate-scaleDown"}`}
       onClose={onDismiss}
     >
       {children}
