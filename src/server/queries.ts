@@ -15,11 +15,11 @@ export const getMyImages = async () => {
 
   // We don't want the session Id to pass to client
   // That's what taint is for:
-  taintUniqueValue(
+  /*   taintUniqueValue(
     "Do not pass the users session id to the client",
     user,
     user.sessionId,
-  );
+  ); */
 
   return images;
 };
