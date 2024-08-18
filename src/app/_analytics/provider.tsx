@@ -32,7 +32,7 @@ function PostHogAuthWrapper({ children }: { children: React.ReactNode }) {
     } else if (!auth.isSignedIn) {
       posthog.reset();
     }
-  }, [auth]);
+  }, [auth, userInfo.user]);
 
   return children;
 }
