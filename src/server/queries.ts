@@ -1,7 +1,7 @@
 import "server-only";
 import { db } from "./db";
 import { auth } from "@clerk/nextjs/server";
-import { experimental_taintUniqueValue as taintUniqueValue } from "react";
+/* import { experimental_taintUniqueValue as taintUniqueValue } from "react"; */
 
 export const getMyImages = async () => {
   const user = auth();
@@ -22,4 +22,20 @@ export const getMyImages = async () => {
   ); */
 
   return images;
+};
+
+export const getImage = async (id: number) => {
+  const user = auth();
+
+  const image = await db.query.images.findFirst({
+    where: (model, { eq }) => eq(model.id, id),
+  });
+
+  if (!user.userId) throw new Error("Unauthorized");
+
+  if (!image) throw new Error("Image not found");
+
+  if (image.userId !== user.userId) throw new Error("Unauthorized");
+
+  return image;
 };
