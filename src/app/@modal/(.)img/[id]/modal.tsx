@@ -30,6 +30,11 @@ export function Modal({
       className={`h-screen w-screen border-none bg-black/80 p-0 text-white ${isOpen ? "animate-scaleUp" : "animate-scaleDown"}`}
       onClose={onDismiss}
     >
+      <dialog
+        ref={dialogRef}
+        className={`h-screen w-screen border-none bg-black/80 p-0 text-white ${isOpen ? "animate-scaleUp" : "animate-scaleDown"}`}
+        onClose={onDismiss}
+      ></dialog>
       {children}
       <button onClick={onDismiss} className="absolute right-2 top-2 text-xl">
         ✖
